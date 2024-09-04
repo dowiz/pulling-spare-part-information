@@ -13,3 +13,12 @@ def load_dict_from_dotenv(dict_name):
     received_dict = json.loads(json_string)
 
     return received_dict
+
+
+def get_value_of_soup(soup, key):
+
+    response_text = soup.text
+    response_json = json.loads(response_text)
+    value = response_json[key]
+
+    return value

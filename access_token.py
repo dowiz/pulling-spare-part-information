@@ -1,6 +1,7 @@
-from functions import load_dict_from_dotenv
+from functions import load_dict_from_dotenv, get_value_of_soup
 import requests
 from bs4 import BeautifulSoup
+import json
 
 
 # Отримуємо login_data та login_headers зі змінних середовища
@@ -17,4 +18,9 @@ response = session.post(login_page_url, headers=login_headers, data=login_data)
 # # Parse the login page HTML
 soup = BeautifulSoup(response.text, "html.parser")
 
-print(soup)
+key = "access_token"
+
+value = get_value_of_soup(soup, key)
+
+
+print(value)
